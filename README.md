@@ -36,12 +36,12 @@ We call `(cons x y)` code **new**.
 ```elisp
 ;; Decide how much repetitions is needed.
 ;; This is the same as `benchmark-run-compiled` REPETITIONS argument.
-(defconst run-count 1000000)
+(defconst repetitions 1000000)
 
 ;; Collect old code profile.
-(benchstat-old-run run-count (cons 1 2))
+(benchstat-old-run repetitions (cons 1 2))
 ;; Collect new code profile.
-(benchstat-new-run run-count (list 1 2))
+(benchstat-new-run repetitions (list 1 2))
 
 ;; Display the results.
 (benchstat-compare)
@@ -65,3 +65,19 @@ This shows use that:
 
 > Tip: if you have hard times interpreting the output, 
 > read [benchstat documentation](https://github.com/golang/perf/tree/master/cmd/benchstat).
+
+`benchstat-old-run`/`benchstat-new-run` executes form 10 times by default.
+this can be re-defined with `benchstat-run-count` variable:
+
+```elisp
+;; Use 5 runs instead of 10.
+(let ((benchstat-run-count 5))
+  (benchstat-old-run repetitions (cons 1 2)))
+
+;; Also, one can collect additional runs separately.
+(benchstat-old-run-more repetitions (cons 1 2)) ;; 6th run
+(benchstat-old-run-more repetitions (cons 1 2)) ;; 7th run
+
+;; Profile can be reset on demand.
+(benchstat-old-reset)
+```
