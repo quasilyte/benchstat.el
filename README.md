@@ -81,3 +81,5 @@ this can be re-defined with `benchstat-run-count` variable:
 ;; Profile can be reset on demand.
 (benchstat-old-reset)
 ```
+
+**Note**: `run` macros always do overwrite profile data. Keep this in mind when using `run-more`.
