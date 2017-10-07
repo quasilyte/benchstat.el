@@ -32,6 +32,7 @@ You wounder, how performance may change with transition to `(cons x y)`.
 
 We call `(list x y)` code **old**.  
 We call `(cons x y)` code **new**.  
+`:old` and `:new` are **tags** that specify profile file to be used.
 
 ```elisp
 ;; Decide how much repetitions is needed.
