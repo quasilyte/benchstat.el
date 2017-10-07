@@ -1,6 +1,7 @@
 # benchstat.el
 
-Use [benchstat](https://godoc.org/golang.org/x/perf/cmd/benchstat) to measure performance of Emacs Lisp.
+[benchstat](https://godoc.org/golang.org/x/perf/cmd/benchstat) integration that enhances
+builtin `benchmark` package with ability to analyze benchmarking results.
 
 ## Overview 
 
