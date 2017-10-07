@@ -39,9 +39,9 @@ We call `(cons x y)` code **new**.
 (defconst repetitions 1000000)
 
 ;; Collect old code profile.
-(benchstat-old-run repetitions (cons 1 2))
+(benchstat-run :old repetitions (cons 1 2))
 ;; Collect new code profile.
-(benchstat-new-run repetitions (list 1 2))
+(benchstat-run :new repetitions (list 1 2))
 
 ;; Display the results.
 (benchstat-compare)
@@ -66,20 +66,19 @@ This shows use that:
 > Tip: if you have hard times interpreting the output, 
 > read [benchstat documentation](https://github.com/golang/perf/tree/master/cmd/benchstat).
 
-`benchstat-old-run`/`benchstat-new-run` executes form 10 times by default.
+`benchstat-run` executes form 10 times by default.
 this can be re-defined with `benchstat-run-count` variable:
 
 ```elisp
 ;; Use 5 runs instead of 10.
 (let ((benchstat-run-count 5))
-  (benchstat-old-run repetitions (cons 1 2)))
+  (benchstat-run :old repetitions (cons 1 2)))
 
-;; Also, one can collect additional runs separately.
-(benchstat-old-run-more repetitions (cons 1 2)) ;; 6th run
-(benchstat-old-run-more repetitions (cons 1 2)) ;; 7th run
+;; Additional runs can be performed by `benchstat-run-more',
+;; which appends to profile data file.
+(benchstat-run-more :old repetitions (cons 1 2)) ;; Additional 10 runs
 
 ;; Profile can be reset on demand.
-(benchstat-old-reset)
+(benchstat-reset :old) ;; Old file had 15 runs info
+(benchstat-reset :new)
 ```
-
-**Note**: `run` macros always overwrites profile data. Keep this in mind when using `run-more`.
