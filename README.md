@@ -22,7 +22,7 @@ There is no release yet, so you must install it without package manager.
 3. Add `(require 'benchstat)` to your init file (i.e. `~/.emacs`).
 
 > Tip: if you want to experiment without installation, 
-> copy/paste [benchstat.el](benchstat.el) file contents into 
+> copy/paste [benchstat.el](benchstat.el) file contents into  
 > temporary buffer and run `M-x eval-buffer`.
 
 ## Quick start
