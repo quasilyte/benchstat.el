@@ -33,10 +33,10 @@ manual installation is required.
 
 Two options:
 
-1. Download precompiled binary (only for **amd64**).
+1. Download precompiled binary (only for **amd64/linux**).
 2. Compile binary yourself (requires `go` installed).
 
-Precompiled binary for **amd64** is distributed with every [major release](https://github.com/Quasilyte/benchstat.el/releases/tag/v1.0.0).
+Precompiled binary for **amd64/linux** is distributed with every [major release](https://github.com/Quasilyte/benchstat.el/releases/tag/v1.0.0).
 
 Snippet below shows how to install `benchstat` for any platform.
 
