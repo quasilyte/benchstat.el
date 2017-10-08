@@ -98,8 +98,8 @@ implementations easier.
 (benchstat-compare :old :vector)
 ```
 
-When `benchstat-compare` is called with explicit profile keys, single-line comment header
-is prepended to the benchstat output.
+When `benchstat-compare` is called with arguments different from default {`:old`, `:new`},  
+single-line header is prepended to the output.
 
 ```
 /* old=(:old "/tmp/benchstat-old") new=(:vector "/tmp/benchstat-vector") */
