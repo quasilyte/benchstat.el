@@ -66,6 +66,8 @@ We call `(cons x y)` code **new**.
 `:old` and `:new` are **profile keys** that specify profile data file to be used.
 
 ```elisp
+(require 'benchstat)
+
 ;; Decide how much repetitions is needed.
 ;; This is the same as `benchmark-run-compiled` REPETITIONS argument.
 (defconst repetitions 1000000)
