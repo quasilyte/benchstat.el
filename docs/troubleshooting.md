@@ -29,7 +29,7 @@ There are two ways to handle this issue.
 ;; (repeat (1+ x) 5)
 ;;   => (1+ (1+ (1+ (1+ (1+ x)))))
 
-;; More likely to gives reasonable results.
+;; More likely to give reasonable results.
 (benchstat-run :old repetitions (repeat (1+ x) 150))
 ```
 
