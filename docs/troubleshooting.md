@@ -7,8 +7,8 @@ name   old time/op    new time/op    delta
 Emacs    694µs ±211%    942µs ±255%   ~     (p=0.468 n=11+10)
 ```
 
-See that `±211%` and `±255%`?  
-That is a big problem that makes profile data useless. 
+`±211%` and `±255%` -- execution time is too varying between runs.  
+A big problem that makes profile data useless. 
 
 **Solution**
 
