@@ -2,7 +2,7 @@
 
 ;; Author: Iskander Sharipov <quasilyte@gmail.com>
 ;; URL: https://github.com/Quasilyte/benchstat.el
-;; Version: 1.0
+;; Version: 1.0.1
 ;; Keywords: lisp
 
 ;;; Commentary:
