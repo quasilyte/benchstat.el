@@ -47,9 +47,9 @@ GOPATH=`pwd` go get golang.org/x/perf/cmd/benchstat
 ```
 
 Emacs will try to invoke `benchstat` utility by command which is
-specified by `benchstat-program` (default: `benchstat`).
+specified by `benchstat-program` variable (default value: `benchstat`).  
 If you do not have `benchstat` under your PATH, 
-you may set `benchstat-program` to absolute path.
+you can set `benchstat-program` to absolute path.
 
 ### Installation: test
 
