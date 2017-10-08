@@ -51,7 +51,7 @@
 
 (defvar benchstat-run-count 10
   "Default run count for benchstat/run functions.
-The value of lower than 5 is unrecommended.
+The value lower than 5 is unrecommended.
 The value higher than 10 can be good, but most of the time it's redundant.")
 
 (defvar benchstat--profiles
@@ -127,7 +127,7 @@ Use `benchstat-run-more' if you want to append instead."
        (insert (benchstat--run ,REPETITIONS ,@FORMS)))))
 
 (defmacro benchstat-run-more (KEY REPETITIONS &rest FORMS)
-  "Like `benchstat-run', but does not overwrite profile data file."
+  "Like (benchstat-run KEY REPETITIONS FORMS), but does not overwrite profile data file."
   (declare (indent 2))
   (let ((filename (benchstat--profile-filename (benchstat--profile KEY))))
     `(with-temp-buffer
@@ -154,7 +154,8 @@ Benchmarking is done via `benchmark-run-compiled'."
                       (benchmark-run-compiled ,REPETITIONS ,@FORMS)))
 
 (defmacro benchstat--run (REPETITIONS &rest FORMS)
-  "Execute `benchstat--run-once' for `benchstat-run-count' times."
+  "Run (benchstat--run-once REPETITIONS FORMS) `benchstat-run-count' times.
+Return all lines that were collected during that."
   `(let ((run-count benchstat-run-count)
          lines)
      (dotimes (i run-count)
@@ -165,15 +166,16 @@ Benchmarking is done via `benchmark-run-compiled'."
 
 (defun benchstat--format (n stats)
   "Convert `(benchmark-run N ...)' result, STATS, to benchstat format."
-  (pcase-let* ((`(,time-s ,gc-runs) stats)
-               ;; Pedantically speaking, multiplier should be 10
-               ;; times higher, but it will lead to less
-               ;; pleasant results.
-               ;; We are interested in relative
-               ;; differences between `old' and `new', not in
-               ;; the absolute values of `time-ns'.
-               ;; Who measures Emacs Lisp execution in nanoseconds, anyway?
-               (time-ns (* 100000000.0 time-s)))
+  (let* ((time-s (nth 0 stats))
+         (gc-runs (nth 1 stats))
+         ;; Pedantically speaking, multiplier should be 10
+         ;; times higher, but it will lead to less
+         ;; pleasant results.
+         ;; We are interested in relative
+         ;; differences between `old' and `new', not in
+         ;; the absolute values of `time-ns'.
+         ;; Who measures Emacs Lisp execution in nanoseconds, anyway?
+         (time-ns (* 100000000.0 time-s)))
     (when (< time-s 0)
       (benchstat--warn "Negative execution time: %fs (%dns)"
                        time-s
