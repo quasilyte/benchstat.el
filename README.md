@@ -3,7 +3,7 @@
 [benchstat](https://godoc.org/golang.org/x/perf/cmd/benchstat) integration that enhances
 builtin `benchmark` package with ability to analyze benchmarking results.
 
-## Overview 
+## Overview
 
 When you do a performance analysis, or simple benchmarking,
 you almost always **compare** two or more functionally equivallent versions of the code.
@@ -46,6 +46,7 @@ We call `(cons x y)` code **new**.
 (benchstat-run :new repetitions (list 1 2))
 
 ;; Display the results.
+;; Can be run interactively by `M-x benchstat-compare'.
 (benchstat-compare)
 ```
 
@@ -65,7 +66,7 @@ This shows use that:
 * `cons` (new) version is almost 2 times faster.
 * `cons` (new) version does 2 times less allocations.
 
-> Tip: if you have hard times interpreting the output, 
+> Tip: if you have hard times interpreting the output,
 > read [benchstat documentation](https://github.com/golang/perf/tree/master/cmd/benchstat).
 
 `benchstat-run` executes form 10 times by default.

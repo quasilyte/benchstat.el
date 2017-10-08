@@ -66,6 +66,7 @@ If you want to specify only DELTA-TEST, use:
 \(benchstat-compare nil nil \"ttest\"\)
 
 You can compare older profiles by using explicit NEW and OLD."
+  (interactive)
   (let ((new (or new benchstat-filename-new))
         (old (or old benchstat-filename-old))
         (delta-test (or delta-test "utest")))
