@@ -8,7 +8,7 @@ Emacs    694µs ±211%    942µs ±255%   ~     (p=0.468 n=11+10)
 ```
 
 See that `±211%` and `±255%`?  
-This is a big problem that makes profile data useless. 
+That is a big problem that makes profile data useless. 
 
 **Solution**
 
@@ -18,7 +18,9 @@ This may reduce the scatter effect, but will not
 help if you target lexical binding.
 
 Be sure that Emacs process gets enough resources,
-otherwise the results will contain more noise.
+otherwise the results will contain more noise.  
+In general, Emacs 25 performance can be more unpredictable
+than in Emacs 24.
 
 ### Negative execution time with warnings
 
