@@ -176,12 +176,13 @@ Return all lines that were collected during that."
          ;; the absolute values of `time-ns'.
          ;; Who measures Emacs Lisp execution in nanoseconds, anyway?
          (time-ns (* 100000000.0 time-s)))
-    (when (< time-s 0)
+    (if (> time-s 0)
+        (format "BenchmarkEmacs %d %d ns/op %d allocs/op"
+                n time-ns gc-runs)
       (benchstat--warn "Negative execution time: %fs (%dns)"
                        time-s
-                       time-ns))
-    (format "BenchmarkEmacs %d %d ns/op %d allocs/op"
-            n time-ns gc-runs)))
+                       time-ns)
+      "")))
 
 (provide 'benchstat)
 
