@@ -18,7 +18,8 @@ This package makes proper benchmark results analysis far easier by leveraging [b
 
 ### Installation: Emacs package
 
-There is no release yet, so you must install it without package manager.
+Not available at [MELPA](https://github.com/melpa/melpa) yet,
+manual installation is required.
 
 1. Get [benchstat.el](benchstat.el) file.
 2. Move `benchstat.el` to the directory where `require` will find it (tip: `load-path` variable).
