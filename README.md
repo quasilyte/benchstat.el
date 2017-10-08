@@ -16,6 +16,8 @@ This package makes proper benchmark results analysis far easier by leveraging [b
 
 ## Installation
 
+### Installation: Emacs package
+
 There is no release yet, so you must install it without package manager.
 
 1. Get [benchstat.el](benchstat.el) file.
@@ -25,6 +27,34 @@ There is no release yet, so you must install it without package manager.
 > Tip: if you want to experiment without installation, 
 > copy/paste [benchstat.el](benchstat.el) file contents into  
 > temporary buffer and run `M-x eval-buffer`.
+
+### Installation: benchstat program
+
+Two options:
+
+1. Download precompiled binary (only for **amd64**).
+2. Compile binary yourself (requires `go` installed).
+
+Precompiled binary for **amd64** is distributed with every [major release](https://github.com/Quasilyte/benchstat.el/releases/tag/v1.0.0).
+
+Snippet below shows how to install `benchstat` for any platform.
+
+```bash
+mkdir build_benchstat 
+cd build_benchstat
+GOPATH=`pwd` go get golang.org/x/perf/cmd/benchstat
+# ./bin/benchstat is the binary you need
+```
+
+Emacs will try to invoke `benchstat` utility by command which is
+specified by `benchstat-program` (default: `benchstat`).
+If you do not have `benchstat` under your PATH, 
+you may set `benchstat-program` to absolute path.
+
+### Installation: test
+
+1. `(require 'benchstat)` should be evaluated without errors.
+2. `(shell-command "benchstat")` should result into usage message.
 
 ## Quick start
 
