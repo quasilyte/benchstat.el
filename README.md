@@ -75,15 +75,14 @@ this can be re-defined with `benchstat-run-count` variable:
 ```elisp
 ;; Use 5 runs instead of 10.
 (let ((benchstat-run-count 5))
-  (benchstat-run :old repetitions (cons 1 2)))
+  (benchstat-run :new repetitions (cons 1 2)))
 
 ;; Additional runs can be performed by `benchstat-run-more',
 ;; which appends to profile data file.
-(benchstat-run-more :old repetitions (cons 1 2)) ;; Additional 10 runs
+(benchstat-run-more :new repetitions (cons 1 2)) ;; Additional 10 runs
 
 ;; Profile can be reset on demand.
-(benchstat-reset :old) ;; Old file had 15 runs info
-(benchstat-reset :new)
+(benchstat-reset :new) ;; `:new' file had 15 runs info
 ```
 
 It is possible to define additional **profiles** to make comparison of multiple
