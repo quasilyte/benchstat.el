@@ -28,12 +28,12 @@ There is no release yet, so you must install it without package manager.
 
 ## Quick start
 
-Case: your library used `(list x y)` in the places where 2 return values were needed.  
+**Case**: your library used `(list x y)` in the places where 2 return values were needed.  
 You wounder, how performance may change with transition to `(cons x y)`.
 
 We call `(list x y)` code **old**.  
 We call `(cons x y)` code **new**.  
-`:old` and `:new` are **tags** that specify profile file to be used.
+`:old` and `:new` are **profile keys** that specify profile data file to be used.
 
 ```elisp
 ;; Decide how much repetitions is needed.
@@ -41,9 +41,9 @@ We call `(cons x y)` code **new**.
 (defconst repetitions 1000000)
 
 ;; Collect old code profile.
-(benchstat-run :old repetitions (cons 1 2))
+(benchstat-run :old repetitions (list 1 2))
 ;; Collect new code profile.
-(benchstat-run :new repetitions (list 1 2))
+(benchstat-run :new repetitions (cons 1 2))
 
 ;; Display the results.
 ;; Can be run interactively by `M-x benchstat-compare'.
@@ -55,10 +55,10 @@ something like this:
 
 ```
 name   old time/op    new time/op    delta
-Emacs     487ms ± 5%     248ms ± 6%  -49.10%  (p=0.000 n=8+9)
+Emacs    44.2ms ± 6%    25.0ms ±15%  -43.38%  (p=0.000 n=10+10)
 
 name   old allocs/op  new allocs/op  delta
-Emacs      31.0 ± 0%      15.5 ± 3%  -50.00%  (p=0.000 n=9+10)
+Emacs      23.0 ± 0%      11.4 ± 5%  -50.43%  (p=0.000 n=10+10)
 ```
 
 This shows use that:
@@ -84,4 +84,16 @@ this can be re-defined with `benchstat-run-count` variable:
 ;; Profile can be reset on demand.
 (benchstat-reset :old) ;; Old file had 15 runs info
 (benchstat-reset :new)
+```
+
+It is possible to define additional **profiles** to make comparison of multiple
+implementations easier.  
+
+```elisp
+(benchstat-push-profile :vector
+                        "/tmp/benchstat-vector")
+
+(benchstat-run :vector repetitions (vector 1 2))
+
+(benchstat-compare :old :vector)
 ```
