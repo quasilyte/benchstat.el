@@ -92,15 +92,23 @@ The alternative DELTA-TEST is \"ttest\" (two-sample Welch)."
   (interactive)
   (let ((old (benchstat--profile (or old :old)))
         (new (benchstat--profile (or new :new)))
-        (delta-test (or delta-test "utest")))
+        (delta-test (or delta-test "utest"))
+        (legend nil))
+    (unless (and (eq :old (benchstat--profile-key old))
+                 (eq :new (benchstat--profile-key new)))
+      (setq legend (format "/* old=%S new=%S */"
+                           old new)))
     (with-output-to-temp-buffer benchstat-buffer
-      (shell-command
-       (format "%s -delta-test=%s %s %s"
-               benchstat-program
-               delta-test
-               (benchstat--profile-filename old)
-               (benchstat--profile-filename new))
-       benchstat-buffer))))
+      (with-current-buffer benchstat-buffer
+        (when legend
+          (insert legend "\n\n"))
+        (insert
+         (shell-command-to-string
+          (format "%s -delta-test=%s %s %s"
+                  benchstat-program
+                  delta-test
+                  (benchstat--profile-filename old)
+                  (benchstat--profile-filename new))))))))
 
 (defun benchstat-reset (key)
   "Clear KEY profile data file."
