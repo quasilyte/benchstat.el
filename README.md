@@ -97,3 +97,16 @@ implementations easier.
 
 (benchstat-compare :old :vector)
 ```
+
+When `benchstat-compare` is called with explicit profile keys, single-line comment header
+is prepended to the benchstat output.
+
+```
+/* old=(:old "/tmp/benchstat-old") new=(:vector "/tmp/benchstat-vector") */
+
+name   old time/op    new time/op    delta
+Emacs    44.2ms ± 6%    54.7ms ± 9%  +23.91%  (p=0.000 n=10+10)
+
+name   old allocs/op  new allocs/op  delta
+Emacs      23.0 ± 0%      17.0 ± 0%  -26.09%  (p=0.000 n=9+8)
+```
