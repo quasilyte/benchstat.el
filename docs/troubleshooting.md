@@ -59,6 +59,17 @@ It is not always possible to perform such kind of re-writes.
 There are occasions where it leads to inaccurate results, 
 so you may want to stick to second solution.
 
+If optimizations are not required, you can conveniently use `progn`:
+```elisp
+(let ((byte-optimize nil))
+  (benchstat-run :old repetitions
+    (progn (1+ x)
+           (1+ x)
+           (1+ x))))
+```
+Optimizer will throw away all expressions with unused result,
+therefore this can be safely used only when `byte-optimize` is `nil`.
+
 **(2)** Increase the total number of runs.
 
 Some runs will be discarded, the others will be recorded.
