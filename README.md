@@ -18,16 +18,11 @@ This package makes proper benchmark results analysis far easier by leveraging [b
 
 ### Installation: Emacs package
 
-Not available at [MELPA](https://github.com/melpa/melpa) yet,
-manual installation is required.
+To install with [MELPA](https://github.com/melpa/melpa): `M-x package-install benchstat`.  
+If this is not working, check your `package-archives` list.  
 
-1. Get [benchstat.el](benchstat.el) file.
-2. Move `benchstat.el` to the directory where `require` will find it (tip: `load-path` variable).
-3. Add `(require 'benchstat)` to your init file (i.e. `~/.emacs`).
-
-> Tip: if you want to experiment without installation, 
-> copy/paste [benchstat.el](benchstat.el) file contents into  
-> temporary buffer and run `M-x eval-buffer`.
+See [manual installation instruction](docs/manual-installation.md) if you do not
+want to use package manager.
 
 ### Installation: benchstat program
 
