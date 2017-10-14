@@ -1,5 +1,7 @@
 # benchstat.el
 
+[![MELPA](https://melpa.org/packages/benchstat-badge.svg)](https://melpa.org/#/benchstat)
+
 [benchstat](https://godoc.org/golang.org/x/perf/cmd/benchstat) integration that enhances
 builtin `benchmark` package with ability to analyze benchmarking results.
 
