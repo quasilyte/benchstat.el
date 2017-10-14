@@ -18,7 +18,7 @@ This package makes proper benchmark results analysis far easier by leveraging [b
 
 ### Installation: Emacs package
 
-To install with [MELPA](https://github.com/melpa/melpa): `M-x package-install benchstat`.  
+To install from [MELPA](https://github.com/melpa/melpa): `M-x package-install benchstat`.  
 If this is not working, check your `package-archives` list.  
 
 See [manual installation instruction](docs/manual-installation.md) if you do not
